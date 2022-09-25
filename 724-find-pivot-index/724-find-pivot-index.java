@@ -3,19 +3,17 @@ class Solution {
         int left = 0;
         int right = 0;
         
-        for(int i=1; i<nums.length; i++) {
+        for(int i=0; i<nums.length; i++) {
             right += nums[i];
         }
         
-        int pivot = 0;
-        while(left != right && ++pivot < nums.length) {
-            left += nums[pivot-1];
-            right -= nums[pivot];
+        for(int i=0; i<nums.length; i++) {
+            right -= nums[i];
+            if(left == right) {
+                return i;
+            }
+            left += nums[i];
         }
-        
-        if(pivot >= nums.length) {
-            pivot = -1;
-        }
-        return pivot;
+        return -1;
     }
 }
